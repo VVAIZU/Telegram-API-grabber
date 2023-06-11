@@ -1,15 +1,15 @@
 from telethon.sync import TelegramClient, events
 from telethon import functions
 
-api_id = '21116178'
-api_hash = '2bd77bf397175cbc61dd455906ec45a2'
-#phone_number = '+79774099043'
+api_id = ''
+api_hash = ''
+#phone_number = ''
 
 # Каналы, из которых будут браться новые посты
-source_channel_ids = [-1001113554401, -1001086186607, -1001073395209, -1001066741008, -1001107205983, -1001058237943, -1001127255397, -1001120225605, -1001143340196, -1001353999808, -1001019255153, -1001000467914, -1001555145718, -1001262007236, -1001188065289, -1001286823688]
+source_channel_ids = []
 
 # Канал, в который будут пересылаться новые посты
-forward_channel_id = -1001821749218
+forward_channel_id = 
 
 # Создание экземпляра клиента TelegramClient
 client = TelegramClient('sessionA', api_id, api_hash, system_version='4.16.30-vxCUSTOM', device_model='your_device_model', app_version='your_app_version')
@@ -23,7 +23,7 @@ with client:
         message = event.message
 
         # Пересылка поста на канал -1001844013839 с кнопкой "Отправить"
-        forwarded_message = await client.forward_messages(-1001844013839, message)
+        forwarded_message = await client.forward_messages(-1xxxxxxx, message)
         # Создание кнопки "Отправить"
         button_data = f'send_message_{forwarded_message.id}'
         # Отправка сообщения без кнопок
@@ -33,7 +33,7 @@ with client:
     @client.on(events.CallbackQuery(pattern=r'send_message_(\d+)'))
     async def send_message(event):
         message_id = int(event.pattern_match.group(1))
-        message = await event.client.get_messages(-1001844013839, ids=message_id)
+        message = await event.client.get_messages(-1xxxxxxx, ids=message_id)
 
         # Проверка, содержит ли сообщение фотографию
         if message.photo:
